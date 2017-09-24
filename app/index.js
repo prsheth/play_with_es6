@@ -1,3 +1,4 @@
+//Refer: pacakge json setting preset: sets es6 preset that basically does the same thing as use strict but then I don't car e about browser compatibility of using strict
 //LET is used instaed of var
 let a ="hello";
 console.log(a);
@@ -37,3 +38,14 @@ let wizard={
 };
 let {magical,power}=wizard;//Note: the name of the variables used to destructuring of objects needs to be same as property, it matches the name of the variable with the property key and then destructures it
 console.log(magical,power);
+
+//ARROW Functions
+//These functions are anonymous (have no name identifier)
+//Benefits- do not bind their on this, the scope of this is not within that function scope and is within the global scope or the wrapper function that encloses it
+let value= 10;
+
+let increment=()=>{
+value ++;
+}
+increment();
+console.log('value of value',value)
