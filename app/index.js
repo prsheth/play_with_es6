@@ -48,4 +48,30 @@ let increment=()=>{
 value ++;
 }
 increment();
-console.log('value of value',value)
+console.log('value of value',value);
+
+//WRITE A PROGRAM TO MULTIPLY EACH ELEMENT OF AN ARRAY
+function multiply(a,b,c,d){
+    let val= a*a + b*b + c*c + d*d;
+    console.log(val);
+}
+let array=[5,6,8,9];
+array.pop();
+let array2=[10,...array];
+multiply(...array2);
+
+//Using map functions with anonymous functions
+
+let points=[10,20,30];
+points =points.map(element=>{
+   return element+1; 
+});
+console.log(points);
+
+
+//Using arrow functions with filter function
+let scores=[100,12,34,56,78,98,76,5,4,23,12,88,90,87,56,65,78];
+let passing=scores.filter(element=>{
+    return element >=70;
+});
+console.log('Passing ',passing);
