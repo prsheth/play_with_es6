@@ -1,5 +1,7 @@
 //Refer: pacakge json setting preset: sets es6 preset that basically does the same thing as use strict but then I don't car e about browser compatibility of using strict
 //LET is used instaed of var
+import{students,total} from "./students";
+import  {add,multiplication,subract} from "./calculator";
 let a ="hello";
 console.log(a);
 {
@@ -75,3 +77,7 @@ let passing=scores.filter(element=>{
     return element >=70;
 });
 console.log('Passing ',passing);
+
+//LOOKING FOR MODULES ON THE TOP AND PRINTING
+console.log(students,total);
+console.log(subract(6,5));
