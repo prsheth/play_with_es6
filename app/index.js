@@ -88,3 +88,30 @@ console.log('Passing ', passing);
 //LOOKING FOR MODULES ON THE TOP AND PRINTING
 console.log(students, total);
 console.log(subract(6, 5));
+
+import Entity from "./entity";
+class Hobbit extends Entity{
+    constructor(name,height){
+        super(name,height);//THIS KEYWORD REFERENCES THE PARENT CLASS CONSTRUCTOR DEMOSTRATING INHERITANCE
+    }
+    greet(){
+        console.log(`Hello, I am ${this.name} and my height is ${this.height} for shire !`);
+    }
+}
+let Frodo=new Hobbit("Frodo Baggins",46);
+Frodo.greet();
+
+
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+
+class App  extends Component{
+    render(){
+        return(<div> React JS with JSX </div>
+              )
+            
+        
+    }
+}
+ReactDOM.render(<App></App>,document.getElementById('root')
+               );//TAKES 2 ARGUMENTS, WHAT TO RENDER AND WHERE TO RENDER , THIS IS REQUIRED TO ACTUALLY RENDER ON THE SCREEN
