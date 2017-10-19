@@ -115,3 +115,48 @@ class App  extends Component{
 }
 ReactDOM.render(<App></App>,document.getElementById('root')
                );//TAKES 2 ARGUMENTS, WHAT TO RENDER AND WHERE TO RENDER , THIS IS REQUIRED TO ACTUALLY RENDER ON THE SCREEN
+
+
+//ES6 PROMISES IN DETAIL
+/*
+Prmomises provides a way to hanlde asynchronous processing in a more synchronous fashion. Promises provide guarantees of values irresepctive of whether it is resolved or not unlike callbacks. Also it doesnt matter if we register a handler to get the value like events.Since promises are immutable no other registered handlers can change its value. 
+*/
+var p= Promise.resolve("foobar"); //IMMEDIATELY RESOLVED PROMISES
+p.then((res)=>console.log('Reponse',res)); //GETS VALUE IRRESPECTIVE UNLIKE EVENTS
+
+var p2=new Promise(function(resolve,reject){
+   setTimeout(()=>resolve(4),2000); 
+});
+p2.then((res)=>{
+    res+=2;
+    console.log('Response when value is changed but promise cannot be changed',res);
+});
+p2.then((res)=>console.log("Response when retreived",res));
+
+//Promises can be created using the new Promise constructor which handles two arguments resolve and reject
+//resolve: calls the future value when it is ready
+//reject: a function to call if the future value cannot be resolved
+/*Promises can have the following three states
+Pending :until a promise is fulfilled
+Fulfilled: when the promise is in this state the value is passed to the handler and is considered future value
+Rejected: if the second function is called the promise is considered failed or rejected and then this value is passed to the handler
+EACH PROMISE CAN BE SATISFIED OR SETTLED ONLY ONCE (i.e. resolved or rejected)
+Consuming promises which is the processing of the value once fulfilled we can use the .then() method. This method takes a function that will be have the resolved value once the promise is fulfilled. .then() method actually takes two parameters , first is the function to be called when the promise is fulfilled and the second is the function called when rejected.Omiting one of these functions is possible as it would be passed as null
+.catch() is used to handle errors , throwing an error would reject the promise
+HANDY: promise.all() will wait for all promises to be settled and then intiate processing. it takes an array of promises and once resolved it returns a promise with an array of fulfilled values.
+*/
+var urls=[
+    'http://www.api.com/items/1234',
+    'http://www.api.com/items/5678'
+],
+itemsPromise= urls.map(fetchJSON);//assume fetch json is a function that uses jquery fn getJSON
+Promise.all(itemsPromise).then(function(results){
+   console.log('Results',results); 
+}).catch(function(err){
+    console.log('Error',err);
+});
+//Incase you dont want to wait for all promises to be resolved but want to execute the first promise, promise.race() can be used. ECMAScript 2015 (6th Edition) was when Promise became a standard.
+
+
+
+
